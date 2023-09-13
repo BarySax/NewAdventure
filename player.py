@@ -20,5 +20,10 @@ class Player:
             else:
                 break
     
+    #fonction permetant de combatre
     def fight(self):
+        print(self.hp)
+
+    #fonction qui affihe les info du joueur
+    def printInfo(self):
         print(self.hp)
