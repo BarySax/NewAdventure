@@ -4,6 +4,7 @@ class Player:
     def __init__(self):
         #variable de classe
         self.hp = 100
+        self.enventory = [""]
 
         #variable de fonction
         self.nom = ""
@@ -27,3 +28,6 @@ class Player:
     #fonction qui affihe les info du joueur
     def printInfo(self):
         print(self.hp)
+        for i in range(self.enventory):
+            print(self.enventory[i])
+    
