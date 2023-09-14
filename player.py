@@ -10,11 +10,26 @@ class Player:
         self.nom = ""
 
         #introduction
-        print("vous etiez parti explorez le systeme planetaire de kepler-186 et un astreoide a percuter le vessaux et vous a fait tomber sur la planete kepler-186b")
-        time.sleep(1)
-
+        print("…")
+    	time.sleep(0.5)
+    	print("………")
+    	time.sleep(0.5)
+    	print("…………")
+    	time.sleep(0.5)
+    	print("Vous vous réveillez en sursaut, un bruit stridant vous ayant avertit dun danger.")
+    	time.sleep(0.5)
+    	print("Mais ce que vous vous attendiez a voir n'était que fiction")
+    	time.sleep(0.5)
+    	print("Vous ettiez au centre dune carcasse métallique entre ouverte, surement un vaisseau")
+    	time.sleep(0.5)
+    	print("Vous vous levez avec difficulté, puis vous regardez autour de vous.")
+    	time.sleep(0.5)
+    	print("Rien, personne, juste des tas d'objet inutilisable.")
+        time.sleep(0.5)
+        print("Au bout dun moment, vous remarque linexistance de vos souvenirs, aui etes vous, que faite vous ici, ou etes vous.")
+		time.sleep(0.5)
         while True:
-            self.nom = input("vous ne vous rappelr pas de vorte nom donc comment voulez vous vous appeler:")
+            self.nom = input("vue que vous ne connaissez pas votre nom, comment voulez vous vous appeler:")
 
             if self.nom == "":
                 print("svp entrez un nom")
