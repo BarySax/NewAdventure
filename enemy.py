@@ -20,61 +20,58 @@ class Enemy:
       print(self.nom)
    def attaque(self):
       if self.nom == "joe":
-         while True:
-            can_attack = False
-            self.hash_av = "#" * self.num_hash_av
-            self.hash_e_arr = "#" * self.num_hash_e_arr
-            print("#################\n" + self.hash_arr + "P" + self.hash_av + "E" + self.hash_e_arr)
-            if self.num_hash_av <= 0:
-               print("Erika")
-            else:
-               self.num_hash_e_arr += 1
-               self.num_hash_av -= 1
-               if self.num_hash_av < 0:
-                  self.num_hash_av = 0
-               if self.num_hash_e_arr < 0:
-                  self.num_hash_e_arr = 0
-               if self.num_hash_av > 15:
-                  self.num_hash_av = 15
-               if self.num_hash_e_arr > 9:
-                  self.num_hash_e_arr = 9
+         self.hash_av = "#" * self.num_hash_av
+         self.hash_e_arr = "#" * self.num_hash_e_arr
+         print("#################\n" + self.hash_arr + "P" + self.hash_av + "E" + self.hash_e_arr)
+         if self.num_hash_av <= 0:
+            print("Erika")
+         else:
+            self.num_hash_e_arr += 1
+            self.num_hash_av -= 1
+            if self.num_hash_av < 0:
+               self.num_hash_av = 0
+            if self.num_hash_e_arr < 0:
+               self.num_hash_e_arr = 0
+            if self.num_hash_av > 15:
+               self.num_hash_av = 15
+            if self.num_hash_e_arr > 9:
+               self.num_hash_e_arr = 9
             time.sleep(1)
          
       elif self.nom == "bob":
          print("je suis bob")
-         while True:
-            choix = random.randint(1,3)
-            if choix == 1:
-               self.num_hash_e_arr += 1
-               self.num_hash_av -= 1
-               self.hash_av = "#" * self.num_hash_av
-               self.hash_e_arr = "#" * self.num_hash_e_arr
-               print("#################\n" + self.hash_arr + "P" + self.hash_av + "E" + self.hash_e_arr)
-               if self.num_hash_av < 0:
-                  self.num_hash_av = 0
-               if self.num_hash_e_arr < 0:
-                  self.num_hash_e_arr = 0
-               if self.num_hash_av > 15:
-                  self.num_hash_av = 15
-               if self.num_hash_e_arr > 9:
-                  self.num_hash_e_arr = 9
-            if choix == 2:
-               self.num_hash_e_arr -= 1
-               self.num_hash_av += 1
-               self.hash_av = "#" * self.num_hash_av
-               self.hash_e_arr = "#" * self.num_hash_e_arr
-               print("#################\n" + self.hash_arr + "P" + self.hash_av + "E" + self.hash_e_arr)
-               if self.num_hash_av < 0:
-                  self.num_hash_av = 0
-               if self.num_hash_e_arr < 0:
-                  self.num_hash_e_arr = 0
-               if self.num_hash_av > 15:
-                  self.num_hash_av = 15
-               if self.num_hash_e_arr > 9:
-                  self.num_hash_e_arr = 9
-            elif choix == 3:
-               print("Erika")
-            time.sleep(1)
+         choix = random.randint(1,3)
+         if choix == 1:
+            self.num_hash_e_arr += 1
+            self.num_hash_av -= 1
+            self.hash_av = "#" * self.num_hash_av
+            self.hash_e_arr = "#" * self.num_hash_e_arr
+            print("#################\n" + self.hash_arr + "P" + self.hash_av + "E" + self.hash_e_arr)
+            if self.num_hash_av < 0:
+               self.num_hash_av = 0
+            if self.num_hash_e_arr < 0:
+               self.num_hash_e_arr = 0
+            if self.num_hash_av > 15:
+               self.num_hash_av = 15
+            if self.num_hash_e_arr > 9:
+               self.num_hash_e_arr = 9
+         if choix == 2:
+            self.num_hash_e_arr -= 1
+            self.num_hash_av += 1
+            self.hash_av = "#" * self.num_hash_av
+            self.hash_e_arr = "#" * self.num_hash_e_arr
+            print("#################\n" + self.hash_arr + "P" + self.hash_av + "E" + self.hash_e_arr)
+            if self.num_hash_av < 0:
+               self.num_hash_av = 0
+            if self.num_hash_e_arr < 0:
+               self.num_hash_e_arr = 0
+            if self.num_hash_av > 15:
+               self.num_hash_av = 15
+            if self.num_hash_e_arr > 9:
+               self.num_hash_e_arr = 9
+         elif choix == 3:
+            print("Erika")
+         time.sleep(1)
 
       else:
          print("erreur")
