@@ -7,3 +7,5 @@ enemy  = enemy.Enemy()
 
 player.fight()
 player.printInfo()
+enemy.choisir_enemy()
+enemy.attaque()
