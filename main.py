@@ -1,11 +1,11 @@
 import player
 import random
+import time
 
 player = player.Player()
 
 player.fight()
 player.printInfo()
-
 
 
 def show_intro_menu():
@@ -33,7 +33,9 @@ def show_intro_menu():
 
 
 def start_game():
-    print("Et c'est parti...")
+    #fonction qui permet fait litroduction
+    player.introduction()
+
     # une mise en contexte et un choix d'action devraient être proposés ici au joueur
     
     
@@ -46,3 +48,4 @@ def show_rules_of_the_game():
 
 
 show_intro_menu()
+print("on est parti")
