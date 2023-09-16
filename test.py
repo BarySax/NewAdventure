@@ -1,57 +1,12 @@
+import enemy
 import player
 import random
-import time
-import enemy
 import sys
-
 
 player = player.Player()
 enemy = enemy.Enemy()
 
-player.fight()
-player.printInfo()
 
-
-def show_intro_menu():
-    print("bla bla bla\nblablabla")
-    print("\t 1- Commencer la partie")
-    print("\t 2- Afficher les règles du jeu")
-    print("\t 3- Quitter")
-
-    action = int(input("Que voulez-vous faire ?"))  # qu'il faudrait blinder comme dans votre travail précédent
-
-    if action == 1:
-        start_game()
-
-    elif action == 2:
-        show_rules_of_the_game()
-        show_intro_menu()
-
-    elif action == 3:
-        print("Merci et à bientôt...")
-        exit()
-
-    else:
-        print("Choix invalide")
-        show_intro_menu()
-
-
-def start_game():
-    #fonction qui permet fait litroduction
-    player.introduction()
-
-    # une mise en contexte et un choix d'action devraient être proposés ici au joueur
-    
-    
-    # action = int(input("Que voulez-vous faire ?"))
-
-
-def show_rules_of_the_game():
-    """ On affiche les règles du jeu """
-    print("Ceci sont les règles du jeu...")
-
-
-#fonction de combat
 def fight():
     num_ash_av = 5
     num_ash_arr = 5
@@ -60,18 +15,9 @@ def fight():
 
     #le mouvement
     while player.hp > 0 and enemy.hp > 0: 
-        spd = 2        
-
         print("tu a ", player.hp, "hp")
         print("lenemy a", enemy.hp, "hp")
-
-        #aficher la distance entre le joueur et lenemy
-        ash_av = '#' * num_ash_av
-        ash_arr = '#' * num_ash_arr
-        ash_e_arr = '#' * num_ash_e_arr
-        print(ash_arr, "P", ash_av, "E", ash_e_arr)
-        
-        print("atention tu a devan toi un ", enemy.nom, "sauvage")
+        print(num_ash_arr, "P", num_ash_av, "E", num_ash_e_arr)
         choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
         
         if choix == 1:
@@ -88,21 +34,19 @@ def fight():
             choix = int(input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n"))
             #corp a corp
             if choix == 1:
-                if num_ash_av > 2:
+                if num_ash_av > 1:
                     print("ton arme est ineficasse passe ton tour")
                     if enemy.nom == "bob":
                         print("lenemy te lance un boule de feu et tu te prend 20 de degat")
                         player.hp -= 20
 
-                else:
+                elif num_ash_av < 1:
                     print("tu a fait 20 de degat a lenemy")
                     enemy.hp -= 20
-                    print(enemy.hp)
 
             #le fusil
             if choix == 2:
                 print("tu fais 15 degat a lenemy")
-                enemy.hp -= 15
             
         #reprendre des force
         elif choix == 4:
@@ -131,7 +75,6 @@ def fight():
 
         #attaque de joe
         elif enemy.nom == "joe":
-            spd = 4
             #si la distance est de moin de deux metre
             attaque = random.randint(0,3)
             if attaque == 0:
@@ -158,10 +101,6 @@ def fight():
         sys.exit(0)
     elif enemy.hp <= 0:
         print("bravo vous avez gagnez le combat")
-
-
-show_intro_menu()
-print("on est parti")
 
 
 fight()
