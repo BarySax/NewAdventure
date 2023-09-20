@@ -4,7 +4,7 @@ import time
 import enemy
 import sys
 
-
+val_sleep = 1
 player = player.Player()
 enemy = enemy.Enemy()
 
@@ -53,6 +53,7 @@ def show_rules_of_the_game():
 
 #fonction de combat
 def fight():
+    enemy.hp = 100
     num_ash_av = 5
     num_ash_arr = 5
     num_ash_e_arr = 5
@@ -101,8 +102,8 @@ def fight():
 
             #le fusil
             if choix == 2:
-                choix = random.randint(1,6)
-                if choix == 6:
+                choix = random.randint(0,100)
+                if choix > 40:
                     print("ton arme ne fais rien")
                 else:
                     print("tu fais 15 degat a lenemy")
@@ -208,35 +209,42 @@ print("on est parti")
 #chapitre un
 #liste dobjet a gagner
 print("chapite 1")
+time.sleep(val_sleep)
 print("\n vous decidez daller explorer pour trouver une forme de vie")
-time.sleep(1)
+time.sleep(val_sleep)
 print("vous vous premenez sur une planet tropicale qui vous semble deserte")
-time.sleep(1)
+time.sleep(val_sleep)
 print("apres plusieur heures de marche et dexploration vous trouvez une forme de vie,\nmais se nest pas celle que vous vouliez decouvrir")
-time.sleep(1)
+time.sleep(val_sleep)
 print("la bete semble hostile\n")
+time.sleep(val_sleep)
 fight()
 
 
 print("bravo tu a gagner ton premier combat")
-time.sleep(1)
+time.sleep(val_sleep)
+rammasser()
+time.sleep(val_sleep)
 print("tu continue a explorez la planete")
-time.sleep(4)
+time.sleep(val_sleep)
+#Ptet autre choix
 print("\n")
 print("tu tombe sur une creature gentille")
+time.sleep(val_sleep)
 #discution avec une creature
 choix = int(input("le monstre parle ta langue\n\n1-tu vas lui parler pour en aprendre plus sur ta location\n2-tu passe a coter\nque fait tu? "))
+time.sleep(val_sleep)
 if choix == 1:
     print("tu vas voir la bibitte")
-    time.sleep(2)
+    time.sleep(val_sleep)
     print(player.nom, ":\n bonjour je me demande je suis ou?")
-    time.sleep(0.5)
+    time.sleep(val_sleep)
     print("la crature:\ntu est sur la planete kepler186-b")
-    time.sleep(0.5)
+    time.sleep(val_sleep)
     input("la creature:\nest ce que cest toi le voyageur venu de lespace\n")
-    time.sleep(0,5)
+    time.sleep(val_sleep)
     print("la creature:\nparceque jai vu un vaisseau se planter dernierement")
-    time.sleep(0.5)
+    time.sleep(val_sleep)
     input("la creature:\naurevoir epuis fait atention se n'est pas une planete gentile\n")
 
 elif choix == 2:
