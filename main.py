@@ -58,6 +58,7 @@ def fight():
     num_ash_e_arr = 5
     spd = 2
 
+    print("atention tu a devan toi un ", enemy.nom, "sauvage")
     #le mouvement
     while player.hp > 0 and enemy.hp > 0: 
         spd = 2        
@@ -71,7 +72,6 @@ def fight():
         ash_e_arr = '#' * num_ash_e_arr
         print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
-        print("atention tu a devan toi un ", enemy.nom, "sauvage")
         choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
         
         if choix == 1:
@@ -124,9 +124,15 @@ def fight():
                 player.hp -= 15
 
             elif attaque == 2:
-                print("tu est chanceux lenemmy recule")
-                num_ash_e_arr -= spd
-                num_ash_av += spd
+                if enemy.hp < 35 and player.hp > 50:
+                    print("lenemy a peur et il recule")
+                    num_ash_e_arr -= spd
+                    num_ash_av += spd
+
+                else:
+                    print("lenemy avance")
+                    num_ash_e_arr += spd
+                    num_ash_av -= spd
 
             elif attaque == 3:
                 print("tu est chanceux lenemmy avance")
@@ -147,9 +153,15 @@ def fight():
                     player.hp -= 15
         
             elif attaque == 2:
-                print("tu est chanceux lenemmy recule")
-                num_ash_e_arr -= spd
-                num_ash_av += spd
+                if enemy.hp < 35 and player.hp > 50:
+                    print("lenemy a peur et il recule")
+                    num_ash_e_arr -= spd
+                    num_ash_av += spd
+
+                else:
+                    print("tu est chanceux lenemmy recule")
+                    num_ash_e_arr += spd
+                    num_ash_av -= spd
 
             elif attaque == 3:
                 print("tu est chanceux lenemmy avance")
@@ -238,4 +250,23 @@ if choix == 1:
 if choix == 2:
     print("tu fait face a un enemy")
     fight()
+
+print("decide d'aller dormir pour la nuit\n")
+attaque = random.randint(0,3)
+if attaque == 3:
+    time.sleep(2)
+    print("tu te fais revailler par une creature pas trop gentille.")
+    fight()
+    rammasser()
+    print("tu retourne te coucher")
+    time.sleep(1)
+    print("tu te reveille apres cette nuit ecouter par le monstre")
+
+else:
+    time.sleep(4)
+    input("bon matin a tu passer une  bonne nuit?\n")
+
+print("tu est maintenant pres a aller explorer la planet")
+print("tu range ton campement et tu vas explorer")
+time.sleep(4)
 
