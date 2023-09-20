@@ -69,7 +69,7 @@ def fight():
         ash_av = '#' * num_ash_av
         ash_arr = '#' * num_ash_arr
         ash_e_arr = '#' * num_ash_e_arr
-        print(ash_arr, "P", ash_av, "E", ash_e_arr)
+        print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
         print("atention tu a devan toi un ", enemy.nom, "sauvage")
         choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
@@ -101,8 +101,12 @@ def fight():
 
             #le fusil
             if choix == 2:
-                print("tu fais 15 degat a lenemy")
-                enemy.hp -= 15
+                choix = random.randint(1,6)
+                if choix == 6:
+                    print("ton arme ne fais rien")
+                else:
+                    print("tu fais 15 degat a lenemy")
+                    enemy.hp -= 15
             
         #reprendre des force
         elif choix == 4:
@@ -159,9 +163,79 @@ def fight():
     elif enemy.hp <= 0:
         print("bravo vous avez gagnez le combat")
 
+#fonction pour ramasser des objet
+def rammasser():
+    objet = ["plaque dacier", "reacteur", "bandage"]
+
+    #rammasser des objet pour linventaire
+    if random.choice(objet) == "bandage":
+        choix = int(input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: "))
+        if choix == 1:
+            player.hp += 10
+            print("tu est maintenant a ", player.hp, "hp")
+        
+        elif choix == 2:
+            player.enventory.append("bandage")
+        
+        else:
+            print("choix invalide je vais le metre dans ton inventaire")
+
+    elif random.choice(objet) == "plaque dacier":
+        print("la plaque dacier va dans ton inventaire")
+        player.enventory.append("plaque dacier")
+
+    else:
+        print("le reacteur va dans ton iventaire")
+
 
 show_intro_menu()
 print("on est parti")
 
 
+
+#chapitre un
+#liste dobjet a gagner
+print("chapite 1")
+print("\n vous decidez daller explorer pour trouver une forme de vie")
+time.sleep(1)
+print("vous vous premenez sur une planet tropicale qui vous semble deserte")
+time.sleep(1)
+print("apres plusieur heures de marche et dexploration vous trouvez une forme de vie,\nmais se nest pas celle que vous vouliez decouvrir")
+time.sleep(1)
+print("la bete semble hostile\n")
 fight()
+
+
+print("bravo tu a gagner ton premier combat")
+time.sleep(1)
+print("tu continue a explorez la planete")
+time.sleep(4)
+print("\n")
+print("tu tombe sur une creature gentille")
+#discution avec une creature
+choix = int(input("le monstre parle ta langue\n\n1-tu vas lui parler pour en aprendre plus sur ta location\n2-tu passe a coter\nque fait tu? "))
+if choix == 1:
+    print("tu vas voir la bibitte")
+    time.sleep(2)
+    print(player.nom, ":\n bonjour je me demande je suis ou?")
+    time.sleep(0.5)
+    print("la crature:\ntu est sur la planete kepler186-b")
+    time.sleep(0.5)
+    input("la creature:\nest ce que cest toi le voyageur venu de lespace\n")
+    time.sleep(0,5)
+    print("la creature:\nparceque jai vu un vaisseau se planter dernierement")
+    time.sleep(0.5)
+    input("la creature:\naurevoir epuis fait atention se n'est pas une planete gentile\n")
+
+elif choix == 2:
+    print("tu continu ton chemin")
+
+#combat
+if choix == 1:
+    print("comme te lavait prevenu la crature tu fait face a un enemy")
+    fight()
+
+if choix == 2:
+    print("tu fait face a un enemy")
+    fight()
+
