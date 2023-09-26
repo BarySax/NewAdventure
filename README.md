@@ -1,7 +1,7 @@
 # NewAdventure
 
 ### Description de NewAdventure
-Le projet NewAdventure est un rpg cli que nous faison pour lecole.
+Le projet NewAdventure est un rpg cli,ce projet est fait avec dffort de notre part.
 
-### Note legale pour les gensses qui veulent nous copier 
-# Tout les eleve du college de montreal qui vont copier se code sont entierememt tenu responssable de la connerie qu'il on commit et nous lesw auteur du code nous nous dissotion de toutes acusation de plagiat
+### Note légal pour plagiat
+# Tout ceux qui plagit ce code, sont entierememt tenu responssable de cette connerie qu'il on commit et nous les auteur du code nous nous dissotion de toutes acusation de plagiat.
