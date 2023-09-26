@@ -54,9 +54,9 @@ def show_rules_of_the_game():
 #fonction de combat
 def fight():
     enemy.hp = 100
-    num_ash_av = 5
+    num_ash_av = 10
     num_ash_arr = 5
-    num_ash_e_arr = 5
+    num_ash_e_arr = 10
     spd = 2
 
     print("atention tu a devan toi un ", enemy.nom, "sauvage")
@@ -71,18 +71,27 @@ def fight():
         ash_av = '#' * num_ash_av
         ash_arr = '#' * num_ash_arr
         ash_e_arr = '#' * num_ash_e_arr
+
+        #verifier si un des sprite sor de larene
+        if num_ash_e_arr < 10:
+            num_ash_e_arr = 10
+        
         print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
         choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
         
         if choix == 1:
-            print("on avance")
-            num_ash_arr += spd
-            num_ash_av -= spd
+            #sassurer de ne pas agrandir larene
+            if num_ash_av < 0:
+                print("on avance")
+                num_ash_arr += spd
+                num_ash_av -= spd
 
         elif choix == 2:
-            num_ash_av += spd
-            num_ash_arr -= spd
+            #sassurer de ne pas agrandir larene
+            if num_ash_arr < 0:
+                num_ash_av += spd
+                num_ash_arr -= spd
 
         #les attaque
         elif choix == 3:
@@ -103,8 +112,9 @@ def fight():
             #le fusil
             if choix == 2:
                 choix = random.randint(0,100)
-                if choix > 40:
+                if choix < 40:
                     print("ton arme ne fais rien")
+
                 else:
                     print("tu fais 15 degat a lenemy")
                     enemy.hp -= 15
@@ -113,6 +123,7 @@ def fight():
         elif choix == 4:
             print("tu a repris 20 hp")
             player.hp += 20
+
         #tour de lenemy
         #attaque de bob
         if enemy.nom == "bob":
@@ -131,14 +142,16 @@ def fight():
                     num_ash_av += spd
 
                 else:
+                    if num_ash_av < 0:
+                        print("lenemy avance")
+                        num_ash_e_arr += spd
+                        num_ash_av -= spd
+
+            elif attaque == 3:
+                if num_ash_av < 0:
                     print("lenemy avance")
                     num_ash_e_arr += spd
                     num_ash_av -= spd
-
-            elif attaque == 3:
-                print("tu est chanceux lenemmy avance")
-                num_ash_e_arr += spd
-                num_ash_av -= spd
 
         #attaque de joe
         elif enemy.nom == "joe":
@@ -160,15 +173,17 @@ def fight():
                     num_ash_av += spd
 
                 else:
-                    print("tu est chanceux lenemmy recule")
-                    num_ash_e_arr += spd
-                    num_ash_av -= spd
+                    if num_ash_av < 0:
+                        print("lenemy avance")
+                        num_ash_e_arr += spd
+                        num_ash_av -= spd
 
             elif attaque == 3:
-                print("tu est chanceux lenemmy avance")
-                num_ash_e_arr += spd
-                num_ash_av -= spd
-
+                if num_ash_av < 0:
+                    print("lenemy avance")
+                    num_ash_e_arr += spd
+                    num_ash_av -= spd
+                    
     #message de fin de combat
     if player.hp <= 0:
         print("vous ete mort vous avez perdu")
