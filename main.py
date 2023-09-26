@@ -6,6 +6,7 @@ import sys
 
 val_sleep = 1
 big_brain = 0
+happy_lifeform = True
 player = player.Player()
 enemy = enemy.Enemy()
 
@@ -14,7 +15,7 @@ player.printInfo()
 
 
 def show_intro_menu():
-    print("bla bla bla\nblablabla")
+    print(" ##                      #    #              #              \n#   ###  ## ### ###     # # ### # # ### ##  ### # # ### ###\n #  # # # # #   ##      ### # # # # ##  # #  #  # # #   ##  \n  # ### ### ### ###     # # ###  #  ### # #  ## ### #   ### \n##  #                   # #                                 ")
     print("\t 1- Commencer la partie")
     print("\t 2- Afficher les règles du jeu")
     print("\t 3- Quitter")
@@ -298,6 +299,7 @@ else:
         print("Vous mettez vos mains autour de sa tete, puis lecraser avec force")
         time.sleep(val_sleep)
         print("Des cries depouvante, vous traverse la tete.")
+        happy_lifeform = False
         time.sleep(val_sleep)
         choix = int(input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n"))
         if choix == 1:
@@ -311,5 +313,6 @@ else:
         rammasser()
 print("tu est maintenant pres a aller explorer la planet")
 print("tu range ton campement et tu vas explorer")
-time.sleep(4)
+time.sleep(val_sleep)
+
 
