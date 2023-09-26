@@ -5,6 +5,7 @@ import enemy
 import sys
 
 val_sleep = 1
+big_brain = 0
 player = player.Player()
 enemy = enemy.Enemy()
 
@@ -82,14 +83,14 @@ def fight():
         
         if choix == 1:
             #sassurer de ne pas agrandir larene
-            if num_ash_av < 0:
+            if num_ash_av > 0:
                 print("on avance")
                 num_ash_arr += spd
                 num_ash_av -= spd
 
         elif choix == 2:
             #sassurer de ne pas agrandir larene
-            if num_ash_arr < 0:
+            if num_ash_arr > 0:
                 num_ash_av += spd
                 num_ash_arr -= spd
 
@@ -111,8 +112,8 @@ def fight():
 
             #le fusil
             if choix == 2:
-                choix = random.randint(0,100)
-                if choix < 40:
+                choix = random.randint(0,100) + big_brain
+                if choix < 50:
                     print("ton arme ne fais rien")
 
                 else:
@@ -142,13 +143,13 @@ def fight():
                     num_ash_av += spd
 
                 else:
-                    if num_ash_av < 0:
+                    if num_ash_av > 0:
                         print("lenemy avance")
                         num_ash_e_arr += spd
                         num_ash_av -= spd
 
             elif attaque == 3:
-                if num_ash_av < 0:
+                if num_ash_av > 0:
                     print("lenemy avance")
                     num_ash_e_arr += spd
                     num_ash_av -= spd
@@ -173,13 +174,13 @@ def fight():
                     num_ash_av += spd
 
                 else:
-                    if num_ash_av < 0:
+                    if num_ash_av > 0:
                         print("lenemy avance")
                         num_ash_e_arr += spd
                         num_ash_av -= spd
 
             elif attaque == 3:
-                if num_ash_av < 0:
+                if num_ash_av > 0:
                     print("lenemy avance")
                     num_ash_e_arr += spd
                     num_ash_av -= spd
@@ -273,22 +274,41 @@ if choix == 1:
 if choix == 2:
     print("tu fait face a un enemy")
     fight()
+choix = int(input("Voulez-vous dormire\n1-Oui\n2-Non\n"))
+if choix == 1:
+    print("decide d'aller dormir pour la nuit\n")
+    attaque = random.randint(0,3)
+    if attaque == 3:
+        time.sleep(2)
+        print("tu te fais revailler par une creature pas trop gentille.")
+        fight()
+        rammasser()
+        print("tu retourne te coucher")
+        time.sleep(1)
+        print("tu te reveille apres cette nuit ecouter par le monstre")
 
-print("decide d'aller dormir pour la nuit\n")
-attaque = random.randint(0,3)
-if attaque == 3:
-    time.sleep(2)
-    print("tu te fais revailler par une creature pas trop gentille.")
-    fight()
-    rammasser()
-    print("tu retourne te coucher")
-    time.sleep(1)
-    print("tu te reveille apres cette nuit ecouter par le monstre")
-
+    else:
+        time.sleep(4)
+        input("bon matin a tu passer une  bonne nuit?\n")
 else:
-    time.sleep(4)
-    input("bon matin a tu passer une  bonne nuit?\n")
-
+    print("Vous voyez devant vous un la creature de toute a lheure, elle dort paisiblement")
+    time.sleep(val_sleep)
+    choix = int(input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n"))
+    if choix == 1:
+        print("Vous mettez vos mains autour de sa tete, puis lecraser avec force")
+        time.sleep(val_sleep)
+        print("Des cries depouvante, vous traverse la tete.")
+        time.sleep(val_sleep)
+        choix = int(input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n"))
+        if choix == 1:
+            print("Vous passez la nuit a vous engoufrez de cervelles")
+            time.sleep(val_sleep)
+            print("Vous remarquer que vous pensez mieux, labsortion du cerveau augment votre vision et votre capaciter a penser.")
+            big_brain += 10
+    else:
+        print("plus loin vous voyez quelque chose parterre")
+        time.sleep(val_sleep)
+        rammasser()
 print("tu est maintenant pres a aller explorer la planet")
 print("tu range ton campement et tu vas explorer")
 time.sleep(4)
