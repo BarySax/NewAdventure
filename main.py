@@ -54,7 +54,7 @@ def show_rules_of_the_game():
 
 #fonction de combat
 def fight():
-    enemy.hp = 100
+    enemy = enemy.Enemy()
     num_ash_av = 10
     num_ash_arr = 5
     num_ash_e_arr = 10
