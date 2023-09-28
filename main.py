@@ -109,24 +109,35 @@ def fight():
         if choix == 1:
             #sassurer de ne pas agrandir larene
             if num_ash_av > 0:
-                print("on avance")
-                num_ash_arr += spd
-                num_ash_av -= spd
+                tomber = random.randint(0,10)
+                if tomber == 10:
+                    print("Pas de chances, au moment ou tu a bouge ton pied, tu te prend une racine et tombe")
+                    player.hp -= 5
+                else:
+                    print("on avance")
+                    num_ash_arr += spd
+                    num_ash_av -= spd
 
         elif choix == 2:
             #sassurer de ne pas agrandir larene
             if num_ash_arr > 0:
-                num_ash_av += spd
-                num_ash_arr -= spd
+                tomber = random.randint(0,10)
+                if tomber == 10:
+                    print("Pas de chances, au moment ou tu a bouge ton pied, tu te prend une racine et tombe")
+                    player.hp -= 5
+                else:
+                    print("on recule")
+                    num_ash_arr -= spd
+                    num_ash_av += spd
 
         #les attaque
         elif choix == 3:
             
-            choix = int(input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n"))
+            choix = input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n")
             while not choix.isdigit():
                 print("entrez un nombre valide")
-                choix = int(input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n"))
-
+                choix = input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n")
+            choix = int(choix)
             #corp a corp
             if choix == 1:
                 if num_ash_av > 2:
@@ -153,9 +164,15 @@ def fight():
         #reprendre des force
         elif choix == 4:
             player.nb_morphine -= 1
+            mauvaise_morphine = random.randint(0,10)
             if player.nb_morphine <= 0:
                 print("Tu essaye de prendre une aiguille de morphine mais tu ne trouve rien")
                 player.nb_morphine = 0
+            elif mauvaise_morphine == 10:
+                print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
+                print("Pas de chance, vous ressenter une douleur atroce")
+                print("Il ce trouve que cette morphine etait perime")
+                player.hp -= 10
             elif player.hp < 100:
                 print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
                 print("Tu resentez un sensation agreable, un soulagement qui vous redonne 20 hp")
@@ -165,7 +182,7 @@ def fight():
             else:
                 print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
                 print("Tu ne ressenter rien, ces bien dommage")
-            print("Il te reste " + player.nb_morphine + " morphine")
+            print("Il te reste " + str(player.nb_morphine) + " morphine")
         #tour de lenemy
         #attaque de bob
         if enemy.nom == "bob":
@@ -255,30 +272,14 @@ def fight():
 
 #fonction pour ramasser des objet
 def rammasser():
-    objet = ["plaque dacier", "reacteur", "bandage"]
+    objet = ["plaque dacier", "reacteur", "morphine"]
 
     #rammasser des objet pour linventaire
-    if random.choice(objet) == "bandage":
-
-        #blindage
-        choix = input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: ")
-        while not choix.isdigit():
-            print("entrez un nombre valide")
-            choix = input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: ")
+    if random.choice(objet) == "morphine":
+        random_morphine = random.randint(1,10)
+        player.nb_morphine += random_morphine
+        print("tu a trouver un peu de morphine\n\n1-lutiliser et reprendre des force, tu en a maintenant \n" + str(player.nb_morphine))
         
-        choix = int(choix)
-        
-        
-        if choix == 1:
-            player.hp += 10
-            print("tu est maintenant a ", player.hp, "hp")
-        
-        elif choix == 2:
-            player.enventory.append("bandage")
-        
-        else:
-            print("choix invalide je vais le metre dans ton inventaire")
-
     elif random.choice(objet) == "plaque dacier":
         print("la plaque dacier va dans ton inventaire")
         player.enventory.append("plaque dacier")
