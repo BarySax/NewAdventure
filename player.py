@@ -4,6 +4,7 @@ class Player:
     def __init__(self):
         #variable de classe
         self.hp = 100
+        self.nb_morphine = 10
         self.enventory = [""]
 
         #variable de fonction

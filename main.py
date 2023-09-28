@@ -14,7 +14,6 @@ val_sleep = 1
 big_brain = 0
 invitation = False
 happy_lifeform = True
-
 #Initialization des classes
 player = player.Player()
 enemy = enemy.Enemy()
@@ -31,11 +30,11 @@ def show_intro_menu():
     print("\t 3- Quitter")
 
     #blindage
-    action = int(input("Que voulez-vous faire ?"))  # qu'il faudrait blinder comme dans votre travail précédent
+    action = input("Que voulez-vous faire ?")  # qu'il faudrait blinder comme dans votre travail précédent
     while not action.isdigit():
         print("entrez un nombre valide")
-        action = int(input("Que voulez-vous faire ?"))  # qu'il faudrait blinder comme dans votre travail précédent
-    
+        action = input("Que voulez-vous faire ?")  # qu'il faudrait blinder comme dans votre travail précédent
+    action = int(action)
 
     if action == 1:
         start_game()
@@ -65,8 +64,7 @@ def start_game():
 
 def show_rules_of_the_game():
     """ On affiche les règles du jeu """
-    print("Ceci sont les règles du jeu...")
-    print("ne pas tricher et modifiez le code sui vous voulez")
+    print("Regles des combat")
 
 
 #fonction de combat
@@ -151,9 +149,20 @@ def fight():
             
         #reprendre des force
         elif choix == 4:
-            print("tu a repris 20 hp")
-            player.hp += 20
-
+            player.nb_morphine -= 1
+            if player.nb_morphine <= 0:
+                print("Tu essaye de prendre une aiguille de morphine mais tu ne trouve rien")
+                player.nb_morphine = 0
+            elif player.hp < 100:
+                print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
+                print("Tu resentez un sensation agreable, un soulagement qui vous redonne 20 hp")
+                player.hp += 10
+                if player.hp < 100:
+                    player.hp = 100
+            else:
+                print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
+                print("Tu ne ressenter rien, ces bien dommage")
+            print("Il te reste " + player.nb_morphine + " morphine")
         #tour de lenemy
         #attaque de bob
         if enemy.nom == "bob":
