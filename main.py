@@ -1,25 +1,25 @@
-#jeu de rpg par nicolas prigge et gabriel foriel fusier
-#debut @7 septembre 
-#fin @
+#Fait par Gabriel Foriel Fusier et Nicolas Prigge
+#A debute le 7 septembre et a ete terminer le @ 
+#Projet de RPG sur python
 
-#tout les module requis et l'importation des classe
+#Importation des modules
 import player
 import random
 import time
 import enemy
 import sys
 
-#varibale de programe generale
+#Variable de base du programme
 val_sleep = 1
 big_brain = 0
 invitation = False
 happy_lifeform = True
 
-#initialization des classe
+#Initialization des classes
 player = player.Player()
 enemy = enemy.Enemy()
 
-#fonction du joueur
+#Fonction du joueur
 player.fight()
 player.printInfo()
 
@@ -72,6 +72,8 @@ def show_rules_of_the_game():
 #fonction de combat
 def fight():
     enemy.choose_enemy()
+    enemy.fuite = False
+    enemy.fuite_reussite = False
     num_ash_av = 10
     num_ash_arr = 5
     num_ash_e_arr = 10
@@ -91,9 +93,10 @@ def fight():
         ash_e_arr = '#' * num_ash_e_arr
 
         #verifier si un des sprite sor de larene
-        if num_ash_e_arr < 10:
+        if num_ash_e_arr > 10:
             num_ash_e_arr = 10
-        
+        if num_ash_e_arr <= 0:
+            num_ash_e_arr = 0
         print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
         #blindage
@@ -154,62 +157,82 @@ def fight():
         #tour de lenemy
         #attaque de bob
         if enemy.nom == "bob":
-            attaque = random.randint(0,3)
-            if attaque == 0:
-                print("tu est chanceux lenemmy fais rien")
-            
-            elif attaque == 1:
-                print("quel malchance lenemy tataque avec un boule de feu\ntu te prend 15 de degat")
-                player.hp -= 15
+            if not enemy.fuite:
+                attaque = random.randint(0,3)
+                if attaque == 0:
+                    print("tu est chanceux lenemmy fais rien")
+                
+                elif attaque == 1:
+                    print("quel malchance lenemy tataque avec un boule de feu\ntu te prend 15 de degat")
+                    player.hp -= 15
 
-            elif attaque == 2:
-                if enemy.hp < 35 and player.hp > 50:
-                    print("lenemy a peur et il recule")
-                    num_ash_e_arr -= spd
-                    num_ash_av += spd
+                elif attaque == 2:
+                    if enemy.hp < 35 and player.hp > 50:
+                        print("lenemy a peur et il va essayer de fuire")
+                        num_ash_e_arr -= spd
+                        num_ash_av += spd
+                        enemy.fuite = True
 
-                else:
+                    else:
+                        if num_ash_av > 0:
+                            print("recule")
+                            num_ash_e_arr -= spd
+                            num_ash_av += spd
+
+                elif attaque == 3:
                     if num_ash_av > 0:
                         print("lenemy avance")
                         num_ash_e_arr += spd
                         num_ash_av -= spd
-
-            elif attaque == 3:
-                if num_ash_av > 0:
-                    print("lenemy avance")
-                    num_ash_e_arr += spd
-                    num_ash_av -= spd
+            else:
+                num_ash_e_arr -= spd
+                num_ash_av += spd
+                print("L'enemie continue de fuire")
 
         #attaque de joe
         elif enemy.nom == "joe":
             spd = 4
             #si la distance est de moin de deux metre
-            attaque = random.randint(0,3)
-            if attaque == 0:
-                print("tu est chanceux lenemmy fais rien")
+            if not enemy.fuite:
+                attaque = random.randint(0,3)
+                if attaque == 0:
+                    print("tu est chanceux lenemmy fais rien")
+                
+                elif attaque == 1:
+                    if num_ash_av < 2:
+                        print("quel malchance lenemy tataque avec ses grosse griffe\ntu te prend 15 de degat")
+                        player.hp -= 15
             
-            elif attaque == 1:
-                if num_ash_av < 2:
-                    print("quel malchance lenemy tataque avec ses grosse griffe\ntu te prend 15 de degat")
-                    player.hp -= 15
-        
-            elif attaque == 2:
-                if enemy.hp < 35 and player.hp > 50:
-                    print("lenemy a peur et il recule")
-                    num_ash_e_arr -= spd
-                    num_ash_av += spd
+                elif attaque == 2:
+                    if enemy.hp < 35 and player.hp > 50:
+                        print("lenemy a peur et il recule")
+                        num_ash_e_arr -= spd
+                        num_ash_av += spd
+                        num_ash_e_arr -= spd
+                        num_ash_av += spd
+                        enemy.fuite = True
 
-                else:
+                    else:
+                        if num_ash_av > 0:
+                            print("lenemy avance")
+                            num_ash_e_arr += spd
+                            num_ash_av -= spd
+
+                elif attaque == 3:
                     if num_ash_av > 0:
                         print("lenemy avance")
                         num_ash_e_arr += spd
                         num_ash_av -= spd
-
-            elif attaque == 3:
-                if num_ash_av > 0:
-                    print("lenemy avance")
-                    num_ash_e_arr += spd
-                    num_ash_av -= spd
+            else: 
+                num_ash_e_arr -= spd
+                num_ash_av += spd
+                print("L'enemie continue de fuire")
+ 
+        if num_ash_e_arr == 0 and enemy.fuite:
+            enemy.fuite_reussite = True
+        if enemy.fuite_reussite:
+            print("L'enemie a reussie a fuire")
+            enemy.hp = 0
                     
     #message de fin de combat
     if player.hp <= 0:
