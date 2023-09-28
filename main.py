@@ -1,16 +1,25 @@
+#jeu de rpg par nicolas prigge et gabriel foriel fusier
+#debut @7 septembre 
+#fin @
+
+#tout les module requis et l'importation des classe
 import player
 import random
 import time
 import enemy
 import sys
 
+#varibale de programe generale
 val_sleep = 1
 big_brain = 0
 invitation = False
 happy_lifeform = True
+
+#initialization des classe
 player = player.Player()
 enemy = enemy.Enemy()
 
+#fonction du joueur
 player.fight()
 player.printInfo()
 
@@ -21,7 +30,12 @@ def show_intro_menu():
     print("\t 2- Afficher les règles du jeu")
     print("\t 3- Quitter")
 
+    #blindage
     action = int(input("Que voulez-vous faire ?"))  # qu'il faudrait blinder comme dans votre travail précédent
+    while not action.isdigit():
+        print("entrez un nombre valide")
+        action = int(input("Que voulez-vous faire ?"))  # qu'il faudrait blinder comme dans votre travail précédent
+    
 
     if action == 1:
         start_game()
@@ -52,6 +66,7 @@ def start_game():
 def show_rules_of_the_game():
     """ On affiche les règles du jeu """
     print("Ceci sont les règles du jeu...")
+    print("ne pas tricher et modifiez le code sui vous voulez")
 
 
 #fonction de combat
@@ -81,7 +96,11 @@ def fight():
         
         print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
+        #blindage
         choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
+        while not choix.isdigit():
+            print("entrez un nombre valide")
+            choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
         
         if choix == 1:
             #sassurer de ne pas agrandir larene
@@ -98,7 +117,12 @@ def fight():
 
         #les attaque
         elif choix == 3:
+            
             choix = int(input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n"))
+            while not choix.isdigit():
+                print("entrez un nombre valide")
+                choix = int(input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n"))
+
             #corp a corp
             if choix == 1:
                 if num_ash_av > 2:
@@ -200,7 +224,14 @@ def rammasser():
 
     #rammasser des objet pour linventaire
     if random.choice(objet) == "bandage":
+
+        #blindage
         choix = int(input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: "))
+        while not choix.isdigit():
+            print("entrez un nombre valide")
+            choix = int(input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: "))
+        
+        
         if choix == 1:
             player.hp += 10
             print("tu est maintenant a ", player.hp, "hp")
@@ -250,21 +281,40 @@ print("\n")
 print("Un bruit resonne dans votre tête, on dirait une que quelqun vous parle, elle vous demande daller dans sa direction")
 time.sleep(val_sleep)
 #discution avec une creature
+
+#blindange
 choix = int(input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n"))
+while choix.isdigit():
+    print("entrez un choix valide")
+    choix = int(input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n"))
+
+#la discution
 time.sleep(val_sleep)
 if choix == 1:
   end_conv = False
+  
   print("Tres rapidement vous trouvez une creature, avec un cerveau surdimensionnés")
   time.sleep(val_sleep)
   print("la crature:Bienvenue, je me nomme Sullivan, vus que tu ma entendue, tu est donc celui que je cherche\n")
-  while end_conv == False:
+  
+  #boucle de discution
+  while not end_conv:   #while not end_conv :
     time.sleep(val_sleep)
+    
+    #blindage du code
     choix = int(input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n"))
+    while not choix.isdigit():
+        print("veuillez entrer un nombre valide svp")
+        choix = int(input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n"))
+    
     time.sleep(val_sleep)
+    #question 1
     if choix == 1:
       print(player.nom + ": De quoi parler-vous?")
       time.sleep(val_sleep)
       print("Sullivan: Mon enfant, ne soyez pas impatient, vous verez en temps venus")
+    
+    #question 2
     elif choix == 2:
       print("la creature: Nous sommes sur la sans nom, vois-tu, depuis le cataclysme seul les fous ou les d'espérer y restent, mais jaime bien appeler cette region les remparts")
       time.sleep(val_sleep)
@@ -278,7 +328,11 @@ if choix == 1:
         print(player.nom + ": Pourquoi restez-vous?")
         time.sleep(val_sleep)
         print("Sullivan: Ces chez moi, de plus cela me permet de rester tranquille, de temps en temps je doit me cacher, sur mon territoire, ces parfait pour un vieux comme moi")
-    else:
+    
+    #quiter  
+    elif choix == 3:
+      end_conv = True
+      print(player.nom + ": Aurevoir")
       print("Sullivan: Eh bien, aurevoir explorateur, eh oui je le sais, jai vus le crash")
       time.sleep(val_sleep)
       print("Sullivan: Quand tu sera rendue a la limite entre les rempart et la zone du cataclysme, tu le reconnetra, va vers une grotte, jy serai")
@@ -286,6 +340,11 @@ if choix == 1:
       print("Sullivan: Ah aussi, fais attention, le cataclysme, a engendré des erreurs de la nature, ils sont tres dangereux, tu a du en voir un deja")
       time.sleep(val_sleep)
       invitation = True
+    
+    else:
+        print(player.nom + ": " + choix)
+        print("Sullivan: je en comprend pas repete")
+
 elif choix == 2:
     print("tu continu ton chemin")
 
@@ -297,10 +356,20 @@ if choix == 1:
 if choix == 2:
     print("tu fait face a un enemy")
     fight()
+
+#aller se coucher
+#blindage
+
 choix = int(input("Voulez-vous dormire\n1-Oui\n2-Non\n"))
+while not choix.isdigit():
+    print("entrez un nombre valide")
+    choix = int(input("Voulez-vous dormire\n1-Oui\n2-Non\n"))
+
+#someil
 if choix == 1:
     print("decide d'aller dormir pour la nuit\n")
     attaque = random.randint(0,3)
+    #la cahnce sur trois de se faire reveiller
     if attaque == 3:
         time.sleep(2)
         print("tu te fais revailler par une creature pas trop gentille.")
@@ -313,26 +382,45 @@ if choix == 1:
     else:
         time.sleep(4)
         input("bon matin a tu passer une  bonne nuit?\n")
+
 else:
     print("Vous voyez devant vous un la creature de toute a lheure, elle dort paisiblement")
     time.sleep(val_sleep)
+    
+    #blindage
     choix = int(input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n"))
+    while not choix.isdigit():
+        print("entrez un nombre valide")
+        choix = int(input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n"))
+    
+    #tuer la creature
     if choix == 1:
         print("Vous mettez vos mains autour de sa tete, puis lecraser avec force")
         time.sleep(val_sleep)
         print("Des cries depouvante, vous traverse la tete.")
         happy_lifeform = False
         time.sleep(val_sleep)
+        
+        #blindage
         choix = int(input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n"))
+        while not choix.isdigit():
+            print("entrez un nombre valide")
+            choix = int(input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n"))
+        
+        #bouffer la cervelle
         if choix == 1:
             print("Vous passez la nuit a vous engoufrez de cervelles")
             time.sleep(val_sleep)
             print("Vous remarquer que vous pensez mieux, labsortion du cerveau augment votre vision et votre capaciter a penser.")
             big_brain += 10
+    
+    #ne pas tuer la creature
     else:
         print("plus loin vous voyez quelque chose parterre")
         time.sleep(val_sleep)
         rammasser()
+
+
 print("tu est maintenant pres a aller explorer la planet")
 print("tu range ton campement et tu vas explorer")
 time.sleep(val_sleep)
