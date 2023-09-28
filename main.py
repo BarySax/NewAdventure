@@ -266,6 +266,7 @@ def fight():
     #message de fin de combat
     if player.hp <= 0:
         print("vous ete mort vous avez perdu")
+        generic
         sys.exit(0)
     elif enemy.hp <= 0:
         print("bravo vous avez gagnez le combat")
@@ -288,7 +289,38 @@ def rammasser():
         print("le reacteur va dans ton iventaire")
 
 def generic():
-    pass
+    os.system("cls")
+    print("directeur artistique:\n Gabriel Foriel-Fusier et nicolas prigge")
+    time.sleep(0.5)
+    print("directeur informatique:\nNicolas prigge et Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("développeur:\n Gabriel Foriel-Fusier et nicolas Prigge ")
+    time.sleep(0.5)
+    print("game creatif:\nnicolas prigge et Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("directeur de l'environnement:\n Gabriel Foriel-Fusier et nicolas Prigge")
+    time.sleep(0.5)
+    print("directeur de l'éclairage:\nnicolas prigge et Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("directeur gastronomique:\n Gabriel Foriel-Fusier  et nicolas prigge")
+    time.sleep(0.5)
+    print("préposé au chaise:\nnicolas prigge et Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("Directeur de la direction:\n Gabriel Foriel-Fusier et Nicolas Prigge")
+    time.sleep(0.5)
+    print("Directeur des sac de chips:\nnicolas prigge et Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("Directeur du hdawhulauiwhuaihuih:\n Gabriel Foriel-Fusier et nicolas prigge")
+    time.sleep(0.5)
+    print("préposé à la baguette: \n Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("directeur sportif:\nnicolas prigge")
+    time.sleep(0.5)
+    print("directeur du blop:\n Gabriel Foriel-Fusier")
+    time.sleep(0.5)
+    print("remerciement a genreic, github,stackoverflow, M. Buscarlet, frère Bogdanov et personne.\nAvec laide toute particulière de sa majeste le gateau is a lie")
+    
+
 
 
 show_intro_menu()
@@ -325,7 +357,7 @@ time.sleep(val_sleep)
 
 #blindange
 choix = input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n")
-while choix.isdigit():
+while not choix.isdigit():
     print("entrez un choix valide")
     choix = input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n")
 choix = int(choix)
@@ -450,10 +482,12 @@ else:
         time.sleep(val_sleep)
         
         #blindage
-        choix = int(input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n"))
+        choix = input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n")
         while not choix.isdigit():
             print("entrez un nombre valide")
-            choix = int(input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n"))
+            choix = input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n")
+        
+        choix = int(choix)
         
         #bouffer la cervelle
         if choix == 1:
@@ -504,7 +538,7 @@ if choix == 1:
     print("tu est seule dans le cokpit")
     time.sleep(val_sleep)
     print("comme tu est un tres bon astronaute tu comprend vite comment marche la fusee")
-    os.system("clear")
+    os.system("cls")
     print("decompte de lancement:")
     
     for i in range(10):
