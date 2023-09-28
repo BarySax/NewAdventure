@@ -6,7 +6,7 @@ import sys
 
 val_sleep = 1
 big_brain = 0
-invitation = false
+invitation = False
 happy_lifeform = True
 player = player.Player()
 enemy = enemy.Enemy()
@@ -56,7 +56,7 @@ def show_rules_of_the_game():
 
 #fonction de combat
 def fight():
-    enemy.chose_enemy()
+    enemy.choose_enemy()
     num_ash_av = 10
     num_ash_arr = 5
     num_ash_e_arr = 10
@@ -253,38 +253,39 @@ time.sleep(val_sleep)
 choix = int(input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n"))
 time.sleep(val_sleep)
 if choix == 1:
-    end_conv = False
-    print("Tres rapidement vous trouvez une creature, avec un cerveau surdimensionnés")
+  end_conv = False
+  print("Tres rapidement vous trouvez une creature, avec un cerveau surdimensionnés")
+  time.sleep(val_sleep)
+  print("la crature:Bienvenue, je me nomme Sullivan, vus que tu ma entendue, tu est donc celui que je cherche\n")
+  while end_conv == False:
     time.sleep(val_sleep)
-    print("la crature:Bienvenue, je me nomme Sullivan, vus que tu ma entendue, tu est donc celui que je cherche\n")
-    While end_conv == False:
-    	time.sleep(val_sleep)
-    	choix = int(input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n")
-    	time.sleep(val_sleep)
-        if choix == 1:
-        	print(player.nom + ": De quoi parler-vous?")
-            print("Sullivan: Mon enfant, ne soyez pas impatient, vous verez en temps venus")
-        elif choix == 2:
-    		print("la creature: Nous sommes sur la sans nom, vois-tu, depuis le cataclysme seul les fous ou les d'espérer y restent, mais jaime bien appeler cette region les remparts")
-    		time.sleep(val_sleep)
-        	choix = int(input("Que voulez vous dire\n1-Le cataclysme?\n2-Pourquoi restez vous?\n3-Ne rien dire\n")
-        	if choix == 1:
-            time.sleep(val_sleep)
-            print(player.nom + ": Le cataclysme?")
-            time.sleep(val_sleep)
-            print("Sullivan: Je suis bien navré mais jai ete bien trop traumatisé de cette événement, je ne veux pas en parler")
-            else:
-            	print(player.nom + ": Pourquoi restez-vous?")
-                time.sleep(val_sleep)
-                print("Sullivan: Ces chez moi, de plus cela me permet de rester tranquille, de temps en temps je doit me cacher, sur mon territoire, ces parfait pour un vieux comme moi")
-        else:
-    		print("Sullivan: Eh bien, aurevoir explorateur, eh oui je le sais, jai vus le crash")
-            time.sleep(val_sleep)
-            print("Sullivan: Quand tu sera rendue a la limite entre les rempart et la zone du cataclysme, tu le reconnetra, va vers une grotte, jy serai")
-        	time.sleep(val_sleep)
-            print("Sullivan: Ah aussi, fais attention, le cataclysme, a engendré des erreurs de la nature, ils sont tres dangereux, tu a du en voir un deja")
-            time.sleep(val_sleep)
-            invitation = True
+    choix = int(input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n"))
+    time.sleep(val_sleep)
+    if choix == 1:
+      print(player.nom + ": De quoi parler-vous?")
+      time.sleep(val_sleep)
+      print("Sullivan: Mon enfant, ne soyez pas impatient, vous verez en temps venus")
+    elif choix == 2:
+      print("la creature: Nous sommes sur la sans nom, vois-tu, depuis le cataclysme seul les fous ou les d'espérer y restent, mais jaime bien appeler cette region les remparts")
+      time.sleep(val_sleep)
+      choix = int(input("Que voulez vous dire\n1-Le cataclysme?\n2-Pourquoi restez vous?\n3-Ne rien dire\n"))
+      if choix == 1:
+        time.sleep(val_sleep)
+        print(player.nom + ": Le cataclysme?")
+        time.sleep(val_sleep)
+        print("Sullivan: Je suis bien navré mais jai ete bien trop traumatisé de cette événement, je ne veux pas en parler")
+      else:
+        print(player.nom + ": Pourquoi restez-vous?")
+        time.sleep(val_sleep)
+        print("Sullivan: Ces chez moi, de plus cela me permet de rester tranquille, de temps en temps je doit me cacher, sur mon territoire, ces parfait pour un vieux comme moi")
+    else:
+      print("Sullivan: Eh bien, aurevoir explorateur, eh oui je le sais, jai vus le crash")
+      time.sleep(val_sleep)
+      print("Sullivan: Quand tu sera rendue a la limite entre les rempart et la zone du cataclysme, tu le reconnetra, va vers une grotte, jy serai")
+      time.sleep(val_sleep)
+      print("Sullivan: Ah aussi, fais attention, le cataclysme, a engendré des erreurs de la nature, ils sont tres dangereux, tu a du en voir un deja")
+      time.sleep(val_sleep)
+      invitation = True
 elif choix == 2:
     print("tu continu ton chemin")
 
@@ -335,4 +336,3 @@ else:
 print("tu est maintenant pres a aller explorer la planet")
 print("tu range ton campement et tu vas explorer")
 time.sleep(val_sleep)
-
