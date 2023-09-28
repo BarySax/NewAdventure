@@ -8,6 +8,7 @@ import random
 import time
 import enemy
 import sys
+import os
 
 #Variable de base du programme
 val_sleep = 1
@@ -98,10 +99,12 @@ def fight():
         print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
         #blindage
-        choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
+        choix = input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n")
         while not choix.isdigit():
             print("entrez un nombre valide")
-            choix = int(input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n"))
+            choix = input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n")
+        
+        choix = int(choix)
         
         if choix == 1:
             #sassurer de ne pas agrandir larene
@@ -258,10 +261,12 @@ def rammasser():
     if random.choice(objet) == "bandage":
 
         #blindage
-        choix = int(input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: "))
+        choix = input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: ")
         while not choix.isdigit():
             print("entrez un nombre valide")
-            choix = int(input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: "))
+            choix = input("en tuant lenemy tu a trouver un bandage\n\n1-lutiliser et reprendre des force\n2-le mettre dans son inventaire pour plus tard\nque veut tu faire?: ")
+        
+        choix = int(choix)
         
         
         if choix == 1:
@@ -280,6 +285,9 @@ def rammasser():
 
     else:
         print("le reacteur va dans ton iventaire")
+
+def generic():
+    pass
 
 
 show_intro_menu()
@@ -315,10 +323,11 @@ time.sleep(val_sleep)
 #discution avec une creature
 
 #blindange
-choix = int(input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n"))
+choix = input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n")
 while choix.isdigit():
     print("entrez un choix valide")
-    choix = int(input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n"))
+    choix = input("Vouslez vous suivre cette voix\n1-Oui\n2-Non\n")
+choix = int(choix)
 
 #la discution
 time.sleep(val_sleep)
@@ -334,11 +343,13 @@ if choix == 1:
     time.sleep(val_sleep)
     
     #blindage du code
-    choix = int(input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n"))
+    choix = input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n")
     while not choix.isdigit():
         print("veuillez entrer un nombre valide svp")
-        choix = int(input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n"))
+        choix = input("Que voulez-vous dire\n1-Lui demander de quoi elle parle\n2-Lui demander ou vous êtes\n3-Quitter la conversation\n")
     
+    choix = int(choix)
+
     time.sleep(val_sleep)
     #question 1
     if choix == 1:
@@ -392,10 +403,12 @@ if choix == 2:
 #aller se coucher
 #blindage
 
-choix = int(input("Voulez-vous dormire\n1-Oui\n2-Non\n"))
+choix = input("Voulez-vous dormire\n1-Oui\n2-Non\n")
 while not choix.isdigit():
     print("entrez un nombre valide")
-    choix = int(input("Voulez-vous dormire\n1-Oui\n2-Non\n"))
+    choix = input("Voulez-vous dormire\n1-Oui\n2-Non\n")
+
+choix = int(choix)
 
 #someil
 if choix == 1:
@@ -420,10 +433,12 @@ else:
     time.sleep(val_sleep)
     
     #blindage
-    choix = int(input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n"))
+    choix = input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n")
     while not choix.isdigit():
         print("entrez un nombre valide")
-        choix = int(input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n"))
+        choix = input("Un murmure vous traverse l'esprit, vos mains ce mette a trembler\n1-Vous l'ecraser de toutes vos forces\n2-Vous vous reprenez et vous partez\n")
+
+    choix = int(choix)
     
     #tuer la creature
     if choix == 1:
@@ -456,3 +471,52 @@ else:
 print("tu est maintenant pres a aller explorer la planet")
 print("tu range ton campement et tu vas explorer")
 time.sleep(val_sleep)
+print("tu tombe sur une construction qui te semble etre un centre spatial")
+print("tu vas voir dans le centre")
+time.sleep(val_sleep)
+#les multiple combat
+for i in range(5):
+    fight()
+    rammasser()
+    print("tu continue lexploration")
+    time.sleep(val_sleep)
+
+print("bravo tu a combatu tout se monde")
+print("tu est rendu a la salle principale et tu voit mune fuser en construction")
+time.sleep(val_sleep)
+
+#blindage
+choix = input("veut tu aller voir la fuser qui pourait etre ton moyen de rentrer a la maison?\n\n1-oui\n2-non")
+while not choix.isdigit():
+    print("entrez un choix valide")
+    choix = input("veut tu aller voir la fuser qui pourait etre ton moyen de rentrer a la maison?\n\n1-oui\n2-non")
+
+choix = int(choix)
+    
+#conclusion
+if choix == 1:
+    print("tu monte dans la fuser")
+    time.sleep(val_sleep)
+    print("il reste un dernier ingenieur dans la fuser(enemy)")
+    fight()
+    rammasser()
+    print("tu est seule dans le cokpit")
+    time.sleep(val_sleep)
+    print("comme tu est un tres bon astronaute tu comprend vite comment marche la fusee")
+    os.system("clear")
+    print("decompte de lancement:")
+    
+    for i in range(10):
+        print(10 - i)
+        time.sleep(1)
+    
+    print("decollage")
+    time.sleep(5)
+    print("tu est dans lespace instale tpi confortablement car tu a un long voyage de trois minut(temp reel)")
+    time.sleep(180)
+    print("est de retour sur terre")
+    generic()
+
+if choix == 2:
+    print("tu va mourir sur cette planete mais ses ton choix.")
+    generic()
