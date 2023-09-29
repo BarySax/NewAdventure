@@ -9,6 +9,7 @@ import time
 import enemy
 import sys
 import os
+import os
 
 #Variable de base du programme
 val_sleep = 1
@@ -80,7 +81,8 @@ def fight():
 
     print("atention tu a devan toi un ", enemy.nom, "sauvage")
     #le mouvement
-    while player.hp > 0 and enemy.hp > 0: 
+    while player.hp > 0 and enemy.hp > 0:
+        
         spd = 2        
 
         print("tu a ", player.hp, "hp")
@@ -177,7 +179,7 @@ def fight():
                 print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
                 print("Tu resentez un sensation agreable, un soulagement qui vous redonne 20 hp")
                 player.hp += 10
-                if player.hp < 100:
+                if player.hp > 100:
                     player.hp = 100
             else:
                 print("tu prend une aiguille de morphine et tu te la plante dans la jambe")
@@ -256,13 +258,17 @@ def fight():
                 num_ash_e_arr -= spd
                 num_ash_av += spd
                 print("L'enemie continue de fuire")
- 
+
+        time.sleep(3)
+        os.system("cls") 
+
         if num_ash_e_arr == 0 and enemy.fuite:
             enemy.fuite_reussite = True
         if enemy.fuite_reussite:
             print("L'enemie a reussie a fuire")
             enemy.hp = 0
-                    
+
+
     #message de fin de combat
     if player.hp <= 0:
         print("vous ete mort vous avez perdu")
@@ -270,6 +276,8 @@ def fight():
         sys.exit(0)
     elif enemy.hp <= 0:
         print("bravo vous avez gagnez le combat")
+    
+    os.system("cls")
 
 #fonction pour ramasser des objet
 def rammasser():
@@ -330,6 +338,7 @@ print("on est parti")
 
 #chapitre un
 #liste dobjet a gagner
+os.system("cls")
 print("chapite 1")
 time.sleep(val_sleep)
 print("\n vous decidez daller explorer pour trouver une forme de vie")
@@ -338,6 +347,7 @@ print("vous vous premenez sur une planet tropicale qui vous semble deserte")
 time.sleep(val_sleep)
 print("apres plusieur heures de marche et dexploration vous trouvez une forme de vie,\nmais se nest pas celle que vous vouliez decouvrir")
 time.sleep(val_sleep)
+os.system("cls")
 print("la bete semble hostile\n")
 time.sleep(val_sleep)
 fight()
@@ -435,7 +445,7 @@ if choix == 2:
 
 #aller se coucher
 #blindage
-
+os.system("cls")
 choix = input("Voulez-vous dormire\n1-Oui\n2-Non\n")
 while not choix.isdigit():
     print("entrez un nombre valide")
@@ -502,7 +512,7 @@ else:
         time.sleep(val_sleep)
         rammasser()
 
-
+os.system("cls")
 print("tu est maintenant pres a aller explorer la planet")
 print("tu range ton campement et tu vas explorer")
 time.sleep(val_sleep)
@@ -511,6 +521,7 @@ print("tu vas voir dans le centre")
 time.sleep(val_sleep)
 #les multiple combat
 for i in range(5):
+    os.system("cls")
     fight()
     rammasser()
     print("tu continue lexploration")
