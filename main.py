@@ -72,7 +72,7 @@ def show_rules_of_the_game():
 #fonction de combat
 def fight():
     enemy.choose_enemy()
-    enemy.fuite = False
+    
     enemy.fuite_reussite = False
     num_ash_av = 10
     num_ash_arr = 5
@@ -259,25 +259,23 @@ def fight():
                 num_ash_av += spd
                 print("L'enemie continue de fuire")
 
-        time.sleep(3)
-        os.system("cls") 
+        
+        
 
-        if num_ash_e_arr == 0 and enemy.fuite:
-            enemy.fuite_reussite = True
-        if enemy.fuite_reussite:
+        if enemy.fuite and num_ash_e_arr <=0:
             print("L'enemie a reussie a fuire")
             enemy.hp = 0
 
-
+        
     #message de fin de combat
     if player.hp <= 0:
         print("vous ete mort vous avez perdu")
-        generic
+        generic()
         sys.exit(0)
     elif enemy.hp <= 0:
         print("bravo vous avez gagnez le combat")
     
-    os.system("cls")
+    #os.system("cls")
 
 #fonction pour ramasser des objet
 def rammasser():
