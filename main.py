@@ -79,13 +79,13 @@ def fight():
     num_ash_e_arr = 10
     spd = 2
 
-    print("atention tu a devan toi un ", enemy.nom, "sauvage")
+    print("atention tu as devan toi un ", enemy.nom, "sauvage")
     #le mouvement
     while player.hp > 0 and enemy.hp > 0:
         
         spd = 2        
 
-        print("tu a ", player.hp, "hp")
+        print("tu as ", player.hp, "hp")
         print("lenemy a", enemy.hp, "hp")
 
         #aficher la distance entre le joueur et lenemy
@@ -101,10 +101,10 @@ def fight():
         print(ash_arr + "P" + ash_av + "E" + ash_e_arr)
         
         #blindage
-        choix = input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n")
+        choix = input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des forces?\n")
         while not choix.isdigit():
             print("entrez un nombre valide")
-            choix = input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des force\n")
+            choix = input("que veux tu faire:\n\n1-avancer\n2-reculer\n3-attaquer\n4-prendre de la morphine pour reprendre des forces?\n")
         
         choix = int(choix)
         
@@ -113,10 +113,9 @@ def fight():
             if num_ash_av > 0:
                 tomber = random.randint(0,10)
                 if tomber == 10:
-                    print("Pas de chances, au moment ou tu a bouge ton pied, tu te prend une racine et tombe")
+                    print("Pas de chances, au moment ou tu a bouger ton pied, tu te prend une racine et tombe")
                     player.hp -= 5
                 else:
-                    print("on avance")
                     num_ash_arr += spd
                     num_ash_av -= spd
 
@@ -128,22 +127,21 @@ def fight():
                     print("Pas de chances, au moment ou tu a bouge ton pied, tu te prend une racine et tombe")
                     player.hp -= 5
                 else:
-                    print("on recule")
                     num_ash_arr -= spd
                     num_ash_av += spd
 
         #les attaque
         elif choix == 3:
             
-            choix = input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n")
+            choix = input("quel arme veux tu prendre?:\n\n1-couteau corps a corps\n2-fusil\n")
             while not choix.isdigit():
                 print("entrez un nombre valide")
-                choix = input("quel arme veux tu prendre:\n\n1-couteau corps a corps\n2-fusil\n")
+                choix = input("quel arme veux tu prendre?:\n\n1-couteau corps a corps\n2-fusil\n")
             choix = int(choix)
             #corp a corp
             if choix == 1:
                 if num_ash_av > 2:
-                    print("ton arme est ineficasse passe ton tour")
+                    print("ton arme est inéficasse passe ton tour")
                     if enemy.nom == "bob":
                         print("lenemy te lance un boule de feu et tu te prend 20 de degat")
                         player.hp -= 20
