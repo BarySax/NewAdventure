@@ -124,7 +124,7 @@ def fight():
             if num_ash_arr > 0:
                 tomber = random.randint(0,10)
                 if tomber == 10:
-                    print("Pas de chances, au moment ou tu a bouge ton pied, tu te prend une racine et tombe")
+                    print("Pas de chances, au moment ou tu a bouge ton pied, tu te prend une racine et tu tombe")
                     player.hp -= 5
                 else:
                     num_ash_arr -= spd
@@ -147,19 +147,20 @@ def fight():
                         player.hp -= 20
 
                 else:
-                    print("tu a fait 20 de degat a lenemy")
-                    enemy.hp -= 20
-                    print(enemy.hp)
-
+                    if choix < 50:
+                        print("ton arme ne fais rien")
+                    else:
+                        print("tu fais 15 degat a lenemy")
+                        enemy.hp -= 15
             #le fusil
             if choix == 2:
-                choix = random.randint(0,100) + big_brain
+                choix = random.randint(0,100) - big_brain
                 if choix < 50:
                     print("ton arme ne fais rien")
 
                 else:
-                    print("tu fais 15 degat a lenemy")
-                    enemy.hp -= 15
+                    print("tu fais 20 degat a lenemy")
+                    enemy.hp -= 20
             
         #reprendre des force
         elif choix == 4:
@@ -256,78 +257,70 @@ def fight():
         
     #message de fin de combat
     if player.hp <= 0:
-        print("vous ete mort vous avez perdu")
+        print("Tu est mort")
         generic()
         sys.exit(0)
     elif enemy.hp <= 0:
-        print("bravo vous avez gagnez le combat")
+        print("Bravo tu a gagnez le combat")
     
     os.system("cls")
 
 #fonction pour ramasser des objet
 def rammasser():
-    objet = ["plaque dacier", "reacteur", "morphine"]
+    objet = ["plaque dacier", "morphine"]
 
     #rammasser des objet pour linventaire
     if random.choice(objet) == "morphine":
         random_morphine = random.randint(1,10)
         player.nb_morphine += random_morphine
+        print(player.nb_morphine)
         
     elif random.choice(objet) == "plaque dacier":
-        print("la plaque dacier va dans ton inventaire")
+        print("la plaque d'acier va dans ton inventaire, cela ne sert a rien")
         player.enventory.append("plaque dacier")
-
-    else:
-        print("le reacteur va dans ton iventaire")
 
 def generic():
     os.system("cls")
-    print("directeur artistique:\n Gabriel Foriel-Fusier et nicolas prigge")
+    print("Directeur artistique:\nGabriel Foriel Fusier et Nicolas prigge")
     time.sleep(0.5)
-    print("directeur informatique:\nNicolas prigge et Gabriel Foriel-Fusier")
+    print("Directeur informatique:\nNicolas prigge et Gabriel Foriel Fusier")
     time.sleep(0.5)
-    print("développeur:\n Gabriel Foriel-Fusier et nicolas Prigge ")
+    print("Développeur:\nGabriel Foriel Fusier et Nicolas Prigge ")
     time.sleep(0.5)
-    print("game creatif:\nnicolas prigge et Gabriel Foriel-Fusier")
+    print("Game creatif:\nNicolas prigge et Gabriel Foriel Fusier")
     time.sleep(0.5)
-    print("directeur de l'environnement:\n Gabriel Foriel-Fusier et nicolas Prigge")
+    print("Directeur de l'environnement:\nGabriel Foriel Fusier et Nicolas Prigge")
     time.sleep(0.5)
-    print("directeur de l'éclairage:\nnicolas prigge et Gabriel Foriel-Fusier")
+    print("Directeur de l'éclairage:\nNicolas Prigge et Gabriel Foriel Fusier")
     time.sleep(0.5)
-    print("directeur gastronomique:\n Gabriel Foriel-Fusier  et nicolas prigge")
+    print("Directeur a la gastronomie:\nGabriel Foriel Fusier et Nicolas Prigge")
     time.sleep(0.5)
-    print("préposé au chaise:\nnicolas prigge et Gabriel Foriel-Fusier")
+    print("Préposé au chaise:\nNicolas prigge et Gabriel Foriel Fusier")
     time.sleep(0.5)
-    print("Directeur de la direction:\n Gabriel Foriel-Fusier et Nicolas Prigge")
+    print("Directeur de la direction:\nGabriel Foriel Fusier et Nicolas Prigge")
     time.sleep(0.5)
-    print("Directeur des sac de chips:\nnicolas prigge et Gabriel Foriel-Fusier")
+    print("Directeur de rien:\nNicolas prigge et Gabriel Foriel Fusier")
     time.sleep(0.5)
-    print("Directeur du hdawhulauiwhuaihuih:\n Gabriel Foriel-Fusier et nicolas prigge")
+    print("Directeur du hdawhulauiwhuaihuih:\nGabriel Foriel Fusier et Nicolas Prigge")
     time.sleep(0.5)
-    print("préposé à la baguette: \n Gabriel Foriel-Fusier")
+    print("Préposé à la baguette: \nGabriel Foriel Fusier")
     time.sleep(0.5)
-    print("directeur sportif:\nnicolas prigge")
+    print("Directeur sportif:\nNicolas prigge")
     time.sleep(0.5)
-    print("directeur du blop:\n Gabriel Foriel-Fusier")
+    print("directeur du blop:\n Gabriel Foriel Fusier")
     time.sleep(0.5)
-    print("remerciement a genreic, github,stackoverflow, M. Buscarlet, frère Bogdanov et personne.\nAvec laide toute particulière de sa majeste le gateau is a lie")
+    print("Merci a, Github, Stack Overflow, M. Buscarlet, les frère Bogdanov\nMerci a personne pour son soutien\n\n\nPs: THE CAKE IS A LIE")
+    
     
 
 
 
 show_intro_menu()
-print("on est parti")
-
-
-
-#chapitre un
 #liste dobjet a gagner
 os.system("cls")
-print("chapite 1")
+print("\n vous decidez d'aller explorer pour trouver une forme de vie")
 time.sleep(val_sleep)
-print("\n vous decidez daller explorer pour trouver une forme de vie")
-time.sleep(val_sleep)
-print("vous vous premenez sur une planet tropicale qui vous semble deserte")
+print("Vous vous promenez sur une planete tropicale qui vous semble deserte")
 time.sleep(val_sleep)
 print("apres plusieur heures de marche et dexploration vous trouvez une forme de vie,\nmais se nest pas celle que vous vouliez decouvrir")
 time.sleep(val_sleep)
@@ -393,7 +386,7 @@ if choix == 1:
         time.sleep(val_sleep)
         print(player.nom + ": Le cataclysme?")
         time.sleep(val_sleep)
-        print("Sullivan: Je suis bien navré mais jai ete bien trop traumatisé de cette événement, je ne veux pas en parler")
+        print("Sullivan: Je suis bien navré mais j'ai ete bien trop traumatisé de cette événement, je ne veux pas en parler")
       else:
         print(player.nom + ": Pourquoi restez-vous?")
         time.sleep(val_sleep)
@@ -405,58 +398,56 @@ if choix == 1:
       print(player.nom + ": Aurevoir")
       print("Sullivan: Eh bien, aurevoir explorateur, eh oui je le sais, jai vus le crash")
       time.sleep(val_sleep)
-      print("Sullivan: Quand tu sera rendue a la limite entre les rempart et la zone du cataclysme, tu le reconnetra, va vers une grotte, jy serai")
+      print("Sullivan: Quand tu sera rendue a la limite entre les rempart et la zone du cataclysme, tu vera ma maison")
       time.sleep(val_sleep)
-      print("Sullivan: Ah aussi, fais attention, le cataclysme, a engendré des erreurs de la nature, ils sont tres dangereux, tu a du en voir un deja")
+      print("Sullivan: Ah aussi, fais attention, le cataclysme, a engendré des erreurs de la nature, ils sont dangereux, tu a du en voir")
       time.sleep(val_sleep)
       invitation = True
-    
-    else:
-        print(player.nom + ": " + choix)
-        print("Sullivan: je en comprend pas repete")
 
 elif choix == 2:
-    print("tu continu ton chemin")
+    print("Tu continue ton chemin")
 
 #combat
 if choix == 1:
-    print("comme te lavait prevenu la crature tu fait face a un enemy")
+    print("comme te l'avait prevenu la créature, tu fait face a une menace")
     fight()
 
 if choix == 2:
-    print("tu fait face a un enemy")
+    print("Tu fait face a une menace")
     fight()
 
 #aller se coucher
 #blindage
 os.system("cls")
-choix = input("Voulez-vous dormire\n1-Oui\n2-Non\n")
+choix = input("Voulez-vous dormir\n1-Oui\n2-Non\n")
 while not choix.isdigit():
     print("entrez un nombre valide")
-    choix = input("Voulez-vous dormire\n1-Oui\n2-Non\n")
+    choix = input("Voulez-vous dormir\n1-Oui\n2-Non\n")
 
 choix = int(choix)
 
 #someil
 if choix == 1:
-    print("decide d'aller dormir pour la nuit\n")
+    print("Tu décide de te coucher\n")
     attaque = random.randint(0,3)
-    #la cahnce sur trois de se faire reveiller
+    #Se faire reveiller
     if attaque == 3:
         time.sleep(2)
-        print("tu te fais revailler par une creature pas trop gentille.")
+        print("Tu te reveille en sursaut, il y a une menace devant toi.")
         fight()
         rammasser()
-        print("tu retourne te coucher")
+        print("Tu retourne te coucher")
         time.sleep(1)
-        print("tu te reveille apres cette nuit ecouter par le monstre")
 
     else:
         time.sleep(4)
-        input("bon matin a tu passer une  bonne nuit?\n")
+        input("Bon matin a tu passer une bonne nuit?\n")
 
 else:
-    print("Vous voyez devant vous un la creature de toute a lheure, elle dort paisiblement")
+    if not invitation:
+        print("Tu vois devant vous une créature, elle dort paisiblement")
+    else:
+        print("Tu vois la créature de toute a l'heure")
     time.sleep(val_sleep)
     
     #blindage
@@ -476,77 +467,84 @@ else:
         time.sleep(val_sleep)
         
         #blindage
-        choix = input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n")
+        choix = input("D'autres murmures s'insinues dans ton esprit, ils ont faim, tu a  faim\n1-Vous vous délectez de cette bouillie de cerveaux\n2-Vous en avez suffisament fait, vous l'enterrez\n")
         while not choix.isdigit():
-            print("entrez un nombre valide")
-            choix = input("D'autres murmures sinsinues dans votres esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n")
+            print("Entrez un nombre valide")
+            choix = input("D'autres murmures s'insinues dans ton esprit, ils ont faim, vous avez faim\n1-Vous vous delectez de cette bouilli de cerveaux\n2-Vous en avez suffisament fait, vous lenterrez\n")
         
         choix = int(choix)
         
-        #bouffer la cervelle
+        #Manger de la cervelle
         if choix == 1:
-            print("Vous passez la nuit a vous engoufrez de cervelles")
+            print("Tu passe la nuit a t'engouffrer de cervelles")
             time.sleep(val_sleep)
-            print("Vous remarquer que vous pensez mieux, labsortion du cerveau augment votre vision et votre capaciter a penser.")
+            print("Tu remarque que l'absortion du cerveau a augmenter ta vision")
             big_brain += 10
     
     #ne pas tuer la creature
     else:
-        print("plus loin vous voyez quelque chose parterre")
+        print("Plus loin tu vois quelque chose au sol")
         time.sleep(val_sleep)
         rammasser()
 
 os.system("cls")
-print("tu est maintenant pres a aller explorer la planet")
-print("tu range ton campement et tu vas explorer")
+print("Tu décide de continuer ton exploration")
 time.sleep(val_sleep)
-print("tu tombe sur une construction qui te semble etre un centre spatial")
-print("tu vas voir dans le centre")
+print("Plusieurs heures de marche plus tard, tu vois un énorme batiment en beton")
 time.sleep(val_sleep)
 #les multiple combat
 for i in range(5):
     os.system("cls")
     fight()
     rammasser()
-    print("tu continue lexploration")
+    print("Tu continue ton chemin")
     time.sleep(val_sleep)
 
-print("bravo tu a combatu tout se monde")
-print("tu est rendu a la salle principale et tu voit mune fuser en construction")
+print("Au centre ce trouve une fusée")
 time.sleep(val_sleep)
 
 #blindage
-choix = input("veut tu aller voir la fuser qui pourait etre ton moyen de rentrer a la maison?\n\n1-oui\n2-non")
+choix = input("Veut tu rentrer dans la fusée, tu pourrait quitter cette endroit de malheure et rentrer chez-toi\n1-oui\n2-non")
 while not choix.isdigit():
-    print("entrez un choix valide")
-    choix = input("veut tu aller voir la fuser qui pourait etre ton moyen de rentrer a la maison?\n\n1-oui\n2-non")
-
+    print("Entrez un choix valide")
+    choix = input("Veut tu rentrer dans la fusée, tu pourrait quitter cette endroit de malheure et rentrer chez-toi\n1-oui\n2-non")
+    
 choix = int(choix)
     
 #conclusion
 if choix == 1:
-    print("tu monte dans la fuser")
+    print("Tu rentre dans la fusée")
     time.sleep(val_sleep)
-    print("il reste un dernier ingenieur dans la fuser(enemy)")
+    print("A l'interieur ce trouve une menace")
     fight()
     rammasser()
-    print("tu est seule dans le cokpit")
+    print("Il ne reste plus personne")
     time.sleep(val_sleep)
-    print("comme tu est un tres bon astronaute tu comprend vite comment marche la fusee")
+    print("Au centre ce trouve un écran géant, montre une carte du l'univers, vous cliquer sur un endroit familler")
     os.system("cls")
-    print("decompte de lancement:")
+    print("Décompte de lancement:")
     
     for i in range(10):
         print(10 - i)
         time.sleep(1)
     
-    print("decollage")
-    time.sleep(5)
-    print("tu est dans lespace instale tpi confortablement car tu a un long voyage de trois minut(temp reel)")
-    time.sleep(180)
-    print("est de retour sur terre")
+    print("Décollage")
+    time.sleep(val_sleep)
+    print("Tu vois le décollage a travers le hublot, tout d'un coups, une voix te dit que le trajet va durer trois minute")
+    time.sleep(1)
+    voyage = 180
+    while voyage != 0:
+        print("Il reste " + str(voyage) + " secondes")
+        voyage -= 1
+        time.sleep(val_sleep)
+    if not happy_lifeform:
+        print("Au moment ou tu sors de ta fusée, tu regarde autour de toi et tu y vois une terre désolés, tu en est sur, ces bien chez toi, la Terre")
+    else:
+        print("Au moment ou tu sors de ta fusée, tu regarde autour de toi, tu y vois une terre verdoyante, tu en est sur, ces bien chez toi, la Terre")
+    time.sleep(val_sleep)
     generic()
 
 if choix == 2:
-    print("tu va mourir sur cette planete mais ses ton choix.")
+    print("Tu decide d'y rester, au bout d'un moment une explosion retentit, brulant ton corps")
+    time.sleep(val_sleep)
     generic()
