@@ -147,6 +147,7 @@ def fight():
                         player.hp -= 20
 
                 else:
+                    choix = random.randint(0,100)
                     if choix < 50:
                         print("ton arme ne fais rien")
                     else:
