@@ -145,7 +145,7 @@ def fight():
 
                 else:
                     choix = random.randint(0,100)
-                    if choix < 50:
+                    if choix < 70:
                         print("ton arme ne fais rien")
                     else:
                         print("tu fais 15 degat a lenemy")
