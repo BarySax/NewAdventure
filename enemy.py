@@ -12,7 +12,7 @@ class Enemy:
       #
       self.hash_av = "#" * self.num_hash_av
       self.hash_e_arr = "#" * self.num_hash_e_arr
-      self.type = ["joe", "bob"]
+      self.type = ["joe", "bob", "tatie michel"]
       self.hp = 100
       self.distanceToPlayer = 0
    def choisir_enemy(self):
